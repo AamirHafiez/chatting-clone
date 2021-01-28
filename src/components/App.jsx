@@ -33,7 +33,7 @@ export class App extends Component {
               exact
               path="/"
               render={() => (
-                <LoginContainer {...this.props} setUser={this.setUser} />
+                <LoginContainer {...this.props} setUser={this.setUser} user={user}/>
               )}
             />
             <Route path="/chatlist">

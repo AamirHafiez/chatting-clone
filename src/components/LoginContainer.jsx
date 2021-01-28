@@ -1,6 +1,6 @@
 import React, { Component, createRef } from "react";
 import { NotificationManager } from "react-notifications";
-import { withRouter } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 import SignupContainer from "./SignupContainer";
 import fire from '../config/firebaseConfig';
 
@@ -15,8 +15,6 @@ class LoginContainer extends Component {
       showSignup: false,
       loading: false
     };
-
-    this.usernameRef = createRef();
   }
 
   handleInputChange = (event) => {
@@ -92,13 +90,16 @@ class LoginContainer extends Component {
   }
 
   componentDidMount() {
-    this.usernameRef.current.focus();
     this.authListner();
   }
 
   render() {
     const { email, password, showSignup, loading } = this.state;
     let disableSubmit = loading ? 'disabled' : '';
+
+    if(this.props.user !== '') {
+      return <Redirect to='/chatlist' />
+    }
 
     return (
       <div>
@@ -130,7 +131,6 @@ class LoginContainer extends Component {
                 type="text"
                 name="email"
                 placeholder="Enter email id"
-                ref={this.usernameRef}
               />
             </div>
             <div className="input-containers mt-4 bg-very-light-gray p-3 rounded-12">

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ChatList from './ChatList';
 import ChatBoxContainer from './ChatBoxContainer';
 
-import { withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import fire from '../config/firebaseConfig';
 
 class ChatListContainer extends Component {
@@ -36,6 +36,11 @@ class ChatListContainer extends Component {
         } = this.state;
 
         console.log('user in chatlist: ', this.props.user);
+
+        if(this.props.user === ''){
+            return <Redirect to="/" />
+        }
+
         return (
             <div>
                 <div className="shadow come-down-bounce bg-primary pt-5 pb-5 mb-4 title-container text-light text-align-center d-flex flex-column justify-content-center align-items-center">

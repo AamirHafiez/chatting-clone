@@ -53,9 +53,6 @@ class SignupContainer extends Component {
     }
 
     this.handleSignup();
-
-    // NotificationManager.success("", "Successfully signed up");
-    // this.handleClickOnToLogin();
   };
 
   handleSignup = () => {
