@@ -159,7 +159,7 @@ class LoginContainer extends Component {
                 disabled={disableSubmit}
               >
                 Login
-                {loading && <i class="ml-2 fas fa-circle-notch fa-spin"></i>}
+                {loading && <i className="ml-2 fas fa-circle-notch fa-spin"></i>}
               </button>
             </div>
           </form>

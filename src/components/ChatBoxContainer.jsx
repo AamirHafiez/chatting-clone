@@ -33,7 +33,7 @@ class ChatBoxContainer extends Component {
                     <div className="chatbox-header bg-very-light-gray shadow pt-3 pb-3">
                         <div onClick={this.onClickBackToChats} className="col-11 d-flex align-items-center justify-content-between font-medium mx-auto pointer text-primary">
                             <p className="p-0 m-0">Back to chats</p>
-                            <i class="fas fa-chevron-down"></i>
+                            <i className="fas fa-chevron-down"></i>
                         </div>
                         <div className="mt-1 mx-auto pt-2 pb-2 d-flex align-items-center">
                             <div className="d-flex col-11 mx-auto">
