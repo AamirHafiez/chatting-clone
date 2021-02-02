@@ -13,7 +13,16 @@ export class App extends Component {
     super(props);
     this.state = {
       user: "",
+      count: 1
     };
+  }
+
+  increaseCount = () => {
+    this.setState(prevState => {
+      return {
+        count: prevState.count + 1
+      }
+    });
   }
 
   setUser = (user) => {
@@ -23,8 +32,7 @@ export class App extends Component {
   };
 
   render() {
-    console.log("user: ", this.state.user);
-    const { user } = this.state;
+    const { user, count } = this.state;
     return (
       <div>
         <Router>
@@ -37,7 +45,7 @@ export class App extends Component {
               )}
             />
             <Route path="/chatlist">
-              <ChatListContainer user={user}/>
+              <ChatListContainer count={count} increaseCount={this.increaseCount} user={user}/>
             </Route>
           </Switch>
         </Router>

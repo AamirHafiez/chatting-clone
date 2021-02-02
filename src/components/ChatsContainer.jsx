@@ -1,6 +1,7 @@
 import React, { Component, createRef } from 'react'
 import ChatSent from './ChatSent';
 import ChatReceived from './ChatReceived';
+import fire from '../config/firebaseConfig';
 
 const messagesEndRef =  createRef();
 
@@ -17,21 +18,22 @@ class ChatsContainer extends Component {
     }
 
     render() {
+        const {
+            specificChats
+        } = this.props;
+
         return (
             <div className="chats-container p-2">
                 <div>
-                    <ChatSent message={'This is a dummy message sent'}/>
-                    <ChatReceived message={'This is a dummy message received'}/>
-                    <ChatSent message={'This is a long, really, very long dummy message that has been sent to someone'}/>
-                    <ChatReceived message={'This is a long, really, very long dummy message that has been received to someone'}/>
-                    <ChatSent message={'This is a dummy message sent'}/>
-                    <ChatSent message={'This is a long, really, very long dummy message that has been sent to someone'}/>
-                    <ChatSent message={'This is a dummy message sent'}/>
-                    <ChatReceived message={'This is a long, really, very long dummy message that has been received to someone'}/>
-                    <ChatReceived message={'This is a long, really, very long dummy message that has been received to someone'}/>
-                    <ChatReceived message={'This is a dummy message received'}/>
-
-
+                    {
+                        specificChats.map(chat => {
+                            if(chat.from === fire.auth().currentUser.email){
+                                return <ChatSent message={chat.message}/>
+                            }else{
+                                return <ChatReceived message={chat.message}/>
+                            }
+                        })
+                    }
                     <div ref={messagesEndRef} />
                 </div>
             </div>

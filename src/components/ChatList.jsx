@@ -14,7 +14,7 @@ class ChatList extends Component {
         this.setState({
             notificationCount: 0
         });
-        this.props.toggleChatBox();
+        this.props.toggleChatBox(this.props.friend.email);
     }
 
     render() {
@@ -23,6 +23,10 @@ class ChatList extends Component {
             notificationCount
         } = this.state;
 
+        const {
+            friend
+        } = this.props;
+
         let showNotifications = notificationCount === 0 ? false : true; 
 
         return (
@@ -30,10 +34,8 @@ class ChatList extends Component {
                 <div className="col-2">
                     <img className="rounded-circle shadow" height={50} width={50} src={'https://png.pngtree.com/png-clipart/20190629/original/pngtree-vector-edit-profile-icon-png-image_4101421.jpg'} alt="profile"/>
                 </div>
-                <div className="col-8">
-                    <div>
-                        <p className="p-0 m-0 font-medium">Friend name</p>
-                    </div>
+                <div className="col-8 ml-2 overflow-hidden font-medium overflowed-text">
+                    {friend.email}
                 </div>
                 <div className="col-2">
                     {

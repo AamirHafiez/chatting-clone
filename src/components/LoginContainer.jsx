@@ -76,6 +76,9 @@ class LoginContainer extends Component {
       })
       .catch(error => {
         NotificationManager.error('', error.message);
+        this.setState({
+          loading: false
+        });
       });
   } 
 
